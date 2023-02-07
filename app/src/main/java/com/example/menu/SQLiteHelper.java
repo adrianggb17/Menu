@@ -7,18 +7,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
+    public static final int DATABASE_VERSION = 3;
+    public static final String DATABASE_NAME = "bdEquipos.db";
 
-    public SQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public SQLiteHelper(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(EstructuraBBDD.SQL_DELETE_ENTRIES);
+        //Se crea la nueva versión de la tabla
+        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES);
     }
 }

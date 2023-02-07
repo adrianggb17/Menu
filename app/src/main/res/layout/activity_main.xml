@@ -21,7 +21,8 @@
         android:id="@+id/Clasificacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Muestra la clasisficacion" />
+        android:onClick="iraClasificacion"
+        android:text="Muestra la clasificacion" />
 
     <Button
         android:id="@+id/ModEquipo"
@@ -47,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:onClick="play"
             android:text="activar sonido" />
     </LinearLayout>
 
@@ -61,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|top"
+            android:onClick="stop"
             android:text="desactivar sonido" />
     </LinearLayout>
 
