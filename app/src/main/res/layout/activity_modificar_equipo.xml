@@ -26,6 +26,7 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/design_default_color_error"
             android:onClick="eliminar"
             android:text="Eliminar" />
 
@@ -57,6 +58,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
             android:onClick="modificar"
             android:text="MODIFICAR " />
     </LinearLayout>
@@ -95,6 +97,7 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_200"
             android:onClick="añadir"
             android:text="AÑADIR" />
 
