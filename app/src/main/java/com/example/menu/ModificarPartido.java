@@ -39,7 +39,7 @@ public class ModificarPartido extends AppCompatActivity {
 
     public void eliminar(View view) {
         String nombre = String.valueOf(txtTexto.getText());
-        db.delete("partido","nombre_partido=?",new String[]{nombre});
+        db.delete("partido","nombrePartido=?",new String[]{nombre});
         Toast.makeText(getApplicationContext(), "Has eliminado el partido", Toast.LENGTH_SHORT).show();
     }
 
@@ -50,9 +50,20 @@ public class ModificarPartido extends AppCompatActivity {
         String equipo2 = String.valueOf(txtTexto7.getText());
         int resultado1 = Integer.parseInt(String.valueOf(txtTexto8.getText()));
         int resultado2 = Integer.parseInt(String.valueOf(txtTexto9.getText()));
-
-        inserta2(partido,fecha,equipo1,equipo2,resultado1,resultado2);
         Toast.makeText(getApplicationContext(), "Has añadido un nuevo partido", Toast.LENGTH_SHORT).show();
+        inserta2(partido,fecha,equipo1,equipo2,resultado1,resultado2);
+        if(resultado1>resultado2){
+            String sql = "UPDATE  equipo SET puntos='3' WHERE nombre='" + equipo1 + "'";
+            db.execSQL(sql);
+        }else if(resultado1<resultado2){
+            String sql = "UPDATE  equipo SET puntos='3' WHERE nombre='" + equipo2 + "'";
+            db.execSQL(sql);
+        }else{
+            String sql = "UPDATE  equipo SET puntos='1' WHERE nombre='" + equipo1 + "'";
+            db.execSQL(sql);
+            String sql2 = "UPDATE  equipo SET puntos='1' WHERE nombre='" + equipo2 + "'";
+            db.execSQL(sql2);
+        }
     }
 
     private void inserta2(String nombrePartido, String fecha, String equipo1, String equipo2, int resultado1,int resultado2) {
@@ -66,4 +77,19 @@ public class ModificarPartido extends AppCompatActivity {
         db.insert("partido", null, values);
     }
 
+    public void modificar(View view) {
+        ContentValues cv = new ContentValues();
+        cv.put("resultadoEquipo1", String.valueOf(txtTexto3.getText()));
+        String resultado1 = String.valueOf(txtTexto3.getText());
+        String nombre = String.valueOf(txtTexto2.getText());
+        db.update("partido",cv,"nombreEquipo1=?",new String[]{nombre});
+        Toast.makeText(getApplicationContext(), "Has modificado el partido", Toast.LENGTH_SHORT).show();
+        /*ContentValues cv2 = new ContentValues();
+        cv2.put("puntos", puntos+3);
+        db.update("equipo",cv2,"partido.nombreEquipo1=?",new String[]{nombre});*/
+
+        String sql = "UPDATE  equipo SET puntos='3' WHERE nombre='" + nombre + "'";
+        db.execSQL(sql);
+
+    }
 }

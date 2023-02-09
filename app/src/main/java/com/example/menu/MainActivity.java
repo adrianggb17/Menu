@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         values.put("puntos", puntos);
         values.put("foto", foto);
         db.insert("equipo", null, values);
+
     }
 
         private void inserta2(String nombrePartido, String fecha, String equipo1, String equipo2, int resultado1,int resultado2) {
