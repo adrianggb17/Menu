@@ -29,12 +29,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:onClick="iraModificarEquipo"
         android:text="Insercion/modificacion/eliminar equipo" />
 
     <Button
         android:id="@+id/ModClasificacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="iraModificarPartido"
         android:text="Insercion/modificacion/eliminar partido" />
 
     <LinearLayout

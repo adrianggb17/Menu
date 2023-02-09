@@ -15,13 +15,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES);
+        db.execSQL(EstructuraBBDD.SQL_CREATE_EQUIPO);
+        db.execSQL(EstructuraBBDD.SQL_CREATE_PARTIDO);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(EstructuraBBDD.SQL_DELETE_ENTRIES);
+        db.execSQL(EstructuraBBDD.SQL_DELETE_EQUIPO);
         //Se crea la nueva versión de la tabla
-        db.execSQL(EstructuraBBDD.SQL_CREATE_ENTRIES);
+        db.execSQL(EstructuraBBDD.SQL_DELETE_PARTIDO);
     }
 }

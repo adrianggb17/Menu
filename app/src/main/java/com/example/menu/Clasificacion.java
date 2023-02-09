@@ -27,11 +27,11 @@ public class Clasificacion extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clasificacion);
         lv = findViewById(R.id.lstListaModif);
-        consultaOperas();
         txtTexto1= findViewById(R.id.textView);
         txtTexto2= findViewById(R.id.textView2);
         txtTexto3= findViewById(R.id.textView0);
         imgViewFoto = findViewById(R.id.imageView);
+        consultaOperas();
         lv.setOnItemClickListener(this);
     }
 

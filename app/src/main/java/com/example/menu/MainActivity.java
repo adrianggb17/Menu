@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
@@ -37,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         inserta("FC Barcelona","Barcelona",0,R.drawable.barsa);
         inserta("Cadiz CF","Cadiz",0,R.drawable.cadiz);
         inserta("Cordoba CF","Cordoba",0,R.drawable.cordoba);
+
+        inserta2("BarsaMadrid","03/03/2023","FC Barcelona","Real Madrid",0,5);
+        inserta2("AlavesCadiz","10/03/2023","Alaves","Cadiz CF",1,0);
+
         db.close();
     }
 
@@ -49,8 +55,27 @@ public class MainActivity extends AppCompatActivity {
         db.insert("equipo", null, values);
     }
 
+        private void inserta2(String nombrePartido, String fecha, String equipo1, String equipo2, int resultado1,int resultado2) {
+        ContentValues values = new ContentValues();
+        values.put("nombreEquipo1", equipo1);
+        values.put("nombreEquipo2", equipo2);
+        values.put("resultadoEquipo1", resultado1);
+        values.put("resultadoEquipo2", resultado2);
+        values.put("nombrePartido",nombrePartido);
+        values.put("fechaPartido", fecha);
+        db.insert("partido", null, values);
+    }
+
     public void iraClasificacion(View view) {
         Intent i = new Intent(this,Clasificacion.class);
+        startActivity(i);
+    }
+    public void iraModificarEquipo(View view) {
+        Intent i = new Intent(this,ModificarEquipo.class);
+        startActivity(i);
+    }
+    public void iraModificarPartido(View view) {
+        Intent i = new Intent(this,ModificarPartido.class);
         startActivity(i);
     }
 
